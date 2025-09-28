@@ -51,6 +51,7 @@ public class Item_PlayerSkin : IItemModule
 
     public bool OnEquip(CCSPlayerController player, Dictionary<string, string> item)
     {
+
         if (!item.TryGetValue("slot", out string? slot) || string.IsNullOrEmpty(slot) || ForceModelDefault)
             return false;
 
