@@ -152,7 +152,7 @@ public class Item_pet : IItemModule
 
 
 
-        Server.PrintToChatAll($"Speed: {chicken.Speed}");
+        //Server.PrintToChatAll($"Speed: {chicken.Speed}");
 
         var entity = Utilities.CreateEntityByName<CDynamicProp>("prop_dynamic_override");
         if (entity == null) return null;
@@ -277,7 +277,7 @@ public class Item_pet : IItemModule
                         // Odłącz FollowEntity podczas ruchu
                         petModel.entity.AcceptInput("ClearParent");
                         petModel.entity.AcceptInput("SetAnimation", value: "@courier_run");
-                        Server.PrintToChatAll($"[PET] START ruchu - ręczne pozycjonowanie");
+                        //Server.PrintToChatAll($"[PET] START ruchu - ręczne pozycjonowanie");
                     }
 
                     // Ręcznie pozycjonuj entity na pozycji kurczaka z poprawną rotacją
@@ -296,7 +296,7 @@ public class Item_pet : IItemModule
                         // Przywróć FollowEntity gdy stoi
                         petModel.entity.AcceptInput("FollowEntity", petModel.chicken, petModel.chicken, "!activator");
                         petModel.entity.AcceptInput("SetAnimation", value: "@courier_idle");
-                        Server.PrintToChatAll($"[PET] STOP ruchu - przywrócono FollowEntity");
+                        //Server.PrintToChatAll($"[PET] STOP ruchu - przywrócono FollowEntity");
                         petModel.stationaryTicks = 0;
                     }
 
