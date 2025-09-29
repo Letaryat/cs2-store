@@ -141,13 +141,19 @@ public class Item_pet : IItemModule
         chicken.Speed = 3.5f;
 
 
-        Utilities.SetStateChanged(chicken, "CBaseEntity", "m_flSpeed");
-
         chicken.MaxHealth = 9999;
         Utilities.SetStateChanged(chicken, "CBaseEntity", "m_iMaxHealth");
 
         chicken.Health = 9999;
         Utilities.SetStateChanged(chicken, "CBaseEntity", "m_iHealth");
+
+        chicken.Speed = 300f;
+
+        Server.NextFrame(() =>
+        {
+            Utilities.SetStateChanged(chicken, "CChicken", "m_flSpeed");
+        });
+
 
 
         chicken.Teleport(origin! + offset, pawn.EyeAngles, pawn.AbsVelocity);
@@ -250,6 +256,9 @@ public class Item_pet : IItemModule
             {
                 if (petModel == null || petModel.chicken == null || !petModel.chicken.IsValid ||
                     petModel.entity == null || !petModel.entity.IsValid) continue;
+
+                Server.PrintToChatAll($"Kuciok: {petModel.chicken.DesiredActivity} {petModel.chicken.AbsVelocity}");
+
 
                 Vector currentPos = petModel.chicken.AbsOrigin!;
                 Vector playerPos = playerPawn.AbsOrigin!;
